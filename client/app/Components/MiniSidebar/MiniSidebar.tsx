@@ -14,12 +14,12 @@ const MiniSidebar = () => {
   const pathname = usePathname();
 
   const getStrokeColor = (link: string) => {
-    return pathname === link ? "#3aafae" : "#71717a";
+    return pathname === link ? "#2f71e3" : "#71717a";
   };
 
   const navItems = [
     {
-      icon: <IconGrid />,
+      icon: <IconGrid strokeColor={getStrokeColor("/")} />,
       title: "All",
       link: "/",
     },
@@ -42,8 +42,12 @@ const MiniSidebar = () => {
 
   return (
     <div className="basis-[5rem] flex flex-col bg-[#efefef] ">
-      <div className="flex items-center justify-center h-[5rem]">
-        <Image src={logo} alt="Task Manager App" width={40} height={40} />
+      <div className="flex items-center justify-center h-[5rem] border-b-2 border-r-2 rounded-br-[1.5rem] border-[#71717a]">
+        <Image
+          src={logo}
+          alt="Task Manager App"
+          className="w-[40px] h-[40px]"
+        />
       </div>
 
       <div className="mt-8 flex-1 flex flex-col items-center justify-between">

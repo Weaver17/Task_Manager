@@ -9,7 +9,11 @@ interface MainLayoutProps {
 }
 
 function MainLayout({ children }: MainLayoutProps) {
-  return <div>{children}</div>
+  return (
+    <div className="homepage min-layout flex-1 border-2 border-[#efefef] dark:border-white rounded-[1.5rem] overflow-auto ">
+      {children}
+    </div>
+  );
 }
 
 export default MainLayout;

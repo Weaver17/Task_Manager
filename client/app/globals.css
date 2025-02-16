@@ -59,7 +59,7 @@
 }
 
 body {
-  background-color: #f9f9f9;
+  background-color: #efefef;
   height: 100vh;
   position: relative;
 }
@@ -101,4 +101,9 @@ body {
   border-bottom: 5px solid transparent;
   border-right: 8px solid #2f71e5;
   transform: translateY(-50%);
+}
+.homepage {
+  background-color: #e0e6f7;
+  border-radius: 1.5rem;
+  margin-right: 20rem;
 }
