@@ -10,6 +10,9 @@ function Sidebar() {
       <div className="mt-4 mx-6">
         <RadialChart />
       </div>
+      <button className="mt-auto mb-8 mx-auto py-4 w-[60%] bg-red-500 text-white rounded-[50px] hover:bg-red-800 transition ease-in-out ">
+        Logout
+      </button>
     </div>
   );
 }
