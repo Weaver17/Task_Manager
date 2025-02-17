@@ -9,9 +9,9 @@ function Filters() {
   const priorities = ["All", "Low", "Medium", "High"];
 
   return (
-    <div className="relative py-2 px-2 grid grid-cols-4 items-center gap-3 bg-[#F9F9F9] border-2 border-white rounded-md">
+    <div className="relative py-2 px-2 grid grid-cols-4 items-center gap-3 bg-[#efefef] border-2 border-white rounded-md">
       <span
-        className="absolute left-[5px] bg-[#EDEDED] rounded-md transition-all duration-300"
+        className="absolute left-[5px] bg-[#dfdfdf] rounded-md transition-all duration-300"
         style={{
           width: "calc(100% / 4 - 10px)",
           height: "calc(100% - 10px)",
@@ -26,7 +26,7 @@ function Filters() {
         <button
           key={index}
           className={`relative px-1 z-10 font-medium text-sm ${
-            activeIndex === index ? "text-[#3aafae] " : "text-gray-500"
+            activeIndex === index ? "text-[#3f71e3] " : "text-[#777]"
           }`}
           onClick={() => {
             setActiveIndex(index);

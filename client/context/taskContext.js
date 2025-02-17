@@ -78,7 +78,7 @@ export const TasksProvider = ({ children }) => {
       console.log("Task created", res.data);
 
       setTasks([...tasks, res.data]);
-      toast.success("Task created successfully");
+      toast.success("Task created successfully", { autoClose: 8000 });
     } catch (error) {
       console.log("Error creating task", error);
     }

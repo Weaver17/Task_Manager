@@ -5,7 +5,9 @@ import {
   FaPlusSquare,
   FaUserCircle,
 } from "react-icons/fa";
-import { IoStarOutline, IoMailSharp } from "react-icons/io5";
+import { FaPlus } from "react-icons/fa6";
+import { IoMailSharp } from "react-icons/io5";
+import { IoIosStar } from "react-icons/io";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { FiEdit2, FiSun } from "react-icons/fi";
 import { GoMoon } from "react-icons/go";
@@ -16,13 +18,13 @@ export const github = (
   <FaGithub className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
 export const star = (
-  <IoStarOutline className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
+  <IoIosStar className="h-4 w-4 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
 export const trash = (
-  <BsFillTrash3Fill className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
+  <BsFillTrash3Fill className="h-4 w-4 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
 export const edit = (
-  <FiEdit2 className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
+  <FiEdit2 className="h-4 w-4 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
 export const check = (
   <FaCheck className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
@@ -50,6 +52,9 @@ export const profile = (
 );
 export const home = (
   <AiFillHome className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
+);
+export const add = (
+  <FaPlus className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
 
 // export const github = <i className="fa-brands fa-github"></i>;

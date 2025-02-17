@@ -35,7 +35,7 @@ function Profile() {
             </p>
           </div>
           <div className="text-gray-400">
-            <p>In progress:</p>
+            <p>In Progress:</p>
             <p className="pl-4 relative flex gap-2">
               <span className="absolute h-[70%] w-[0.2rem] left-[1px] top-2 bg-[#39b520] rounded-[5px] "></span>
               <span className="font-medium text-4xl text-[#333]">4</span>
