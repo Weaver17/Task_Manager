@@ -1,7 +1,7 @@
 import { useTasks } from "@/context/taskContext";
 import { edit, star, trash } from "@/utils/Icons";
 import { Task } from "@/utils/types";
-import { formatTime } from "@/utils/utilities";
+import { formatTime, formatDueDate, overdueTasks } from "@/utils/utilities";
 import React from "react";
 import { motion } from "framer-motion";
 import { item } from "@/utils/animations";
@@ -24,12 +24,17 @@ function TaskItem({ task }: TaskItemProps) {
     }
   };
 
+  const { getTask, openEditModal, deleteTask, modalMode } = useTasks();
+
   return (
     <div className="h-[16rem] px-4 py-3 flex flex-col gap-4 shadow-sm bg-[#efefef] rounded-lg border-2 border-white ">
-      <div>
+      <div className="h-full">
         <h4 className="font-bold text-2xl">{task.title}</h4>
         <p>{task.description}</p>
       </div>
+      <p className={`mt-auto text-sm text-[#555]`}>
+        Due: {formatDueDate(task.dueDate)}
+      </p>
       <div className="mt-auto flex justify-between items-center">
         <p className="text-sm text-[#afafaf]">{formatTime(task.createdAt)}</p>
         <p className={`text-sm font-bold ${getPriorityColor(task.priority)}`}>
@@ -41,7 +46,15 @@ function TaskItem({ task }: TaskItemProps) {
           >
             {star}
           </button>
-          <button className="text-[#3f71e375]">{edit}</button>
+          <button
+            onClick={() => {
+              getTask(task._id);
+              openEditModal(task);
+            }}
+            className="text-[#3f71e375]"
+          >
+            {edit}
+          </button>
           <button className="text-[#f3321490]">{trash}</button>
         </div>
       </div>

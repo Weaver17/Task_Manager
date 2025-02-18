@@ -20,13 +20,13 @@ export const TasksProvider = ({ children }) => {
   const [modalMode, setModalMode] = React.useState("");
   const [profileModal, setProfileModal] = React.useState(false);
 
-  const openModalForAdd = () => {
+  const openAddModal = () => {
     setModalMode("add");
     setIsEditing(true);
     setTask({});
   };
 
-  const openModalForEdit = (task) => {
+  const openEditModal = (task) => {
     setModalMode("edit");
     setIsEditing(true);
     setActiveTask(task);
@@ -95,7 +95,7 @@ export const TasksProvider = ({ children }) => {
         return tsk._id === res.data._id ? res.data : tsk;
       });
 
-      toast.success("Task updated successfully");
+      toast.success("Task updated successfully", { autoClose: 8000 });
 
       setTasks(newTasks);
     } catch (error) {
@@ -153,8 +153,8 @@ export const TasksProvider = ({ children }) => {
         handleInput,
         isEditing,
         setIsEditing,
-        openModalForAdd,
-        openModalForEdit,
+        openAddModal,
+        openEditModal,
         activeTask,
         closeModal,
         modalMode,

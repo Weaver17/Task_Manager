@@ -1,7 +1,7 @@
 "use client";
 import { useTasks } from "@/context/taskContext";
 import useRedirect from "@/hooks/useUserRedirect";
-import { overdueTasks } from "@/utils/utilities";
+
 import { Task } from "@/utils/types";
 import { filteredTasks } from "@/utils/utilities";
 import { useEffect } from "react";
@@ -14,9 +14,9 @@ import TaskItem from "../Components/TaskItem/TaskItem";
 export default function Home() {
   useRedirect("/login");
 
-  const { activeTasks, openAddModal, priority, setPriority } = useTasks();
+  const { completedTasks, openAddModal, priority, setPriority } = useTasks();
 
-  const filtered = filteredTasks(overdueTasks(activeTasks), priority);
+  const filtered = filteredTasks(completedTasks, priority);
 
   useEffect(() => {
     setPriority("all");
@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <main className="m-6 h-full">
       <div className="flex justify-between">
-        <h1 className="text-2xl font-bold">Overdue Tasks</h1>
+        <h1 className="text-2xl font-bold">Completed Tasks</h1>
         <Filters />
       </div>
 

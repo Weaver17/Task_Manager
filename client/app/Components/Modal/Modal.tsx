@@ -4,18 +4,51 @@ import useDetectOutside from "@/hooks/useDetectOutside";
 import React, { useEffect } from "react";
 
 function Modal() {
-  const { task, handleInput, createTask } = useTasks();
+  const {
+    task,
+    handleInput,
+    createTask,
+    closeModal,
+    isEditing,
+    modalMode,
+    activeTask,
+    updateTask,
+  } = useTasks();
+  const ref = React.useRef<HTMLFormElement>(
+    null
+  ) as React.RefObject<HTMLFormElement>;
 
-  useEffect(() => {}, []);
+  useDetectOutside({
+    ref,
+    callback: () => {
+      if (isEditing) {
+        closeModal();
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (modalMode === "edit" && activeTask) {
+      handleInput("setTask")(activeTask);
+    }
+  }, [modalMode, activeTask]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createTask(task);
+
+    if (modalMode === "edit") {
+      updateTask(task);
+    } else if (modalMode === "add") {
+      createTask(task);
+    }
+
+    closeModal();
   };
 
   return (
     <div className="fixed left-0 top-0 z-50 h-full w-full bg-[#33333330] overflow-hidden ">
       <form
+        ref={ref}
         action=""
         onSubmit={handleSubmit}
         className="py-5 px-6 max-w-[520px] w-full flex flex-col gap-3 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-md   "
@@ -87,7 +120,14 @@ function Modal() {
         </div>
 
         <div className="mt-8 ">
-          <button type="submit">Create Task</button>
+          <button
+            type="submit"
+            className={`text-white py-2 rounded-md w-full hover:opacity-70 transition duration-300 ease-in-out ${
+              modalMode === "edit" ? "bg-[#2cc0b8]" : "bg-[#3f71e3]"
+            }`}
+          >
+            {`${modalMode === "edit" ? "Update Task" : "Add Task"}`}
+          </button>
         </div>
       </form>
     </div>

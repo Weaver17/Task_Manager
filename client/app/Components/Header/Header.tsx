@@ -1,11 +1,14 @@
 "use client";
+import { useTasks } from "@/context/taskContext";
 import { useUserContext } from "@/context/userContext";
-import { github, moon, profile } from "@/utils/Icons";
+import { add, github, moon, profile } from "@/utils/Icons";
 import Link from "next/link";
 import React from "react";
 
 const Header = () => {
   const { user } = useUserContext();
+
+  const { activeTasks, openAddModal } = useTasks();
 
   const { name } = user;
 
@@ -14,7 +17,7 @@ const Header = () => {
   return (
     <header className="p-6  w-full flex items-center justify-between bg-[#efefef] dark:bg-2">
       <div>
-        <h1 className="text-lg font-medium">
+        <h1 className="text-xl font-medium">
           <span role="img" aria-label="wave">
             👋
           </span>
@@ -23,7 +26,10 @@ const Header = () => {
         <p className="text-sm">
           {userId ? (
             <>
-              You have <span className="font-bold text-[#2f71e3]">5</span>{" "}
+              You have{" "}
+              <span className="font-bold text-[#2f71e3]">
+                {activeTasks.length}
+              </span>{" "}
               active tasks
             </>
           ) : (
@@ -32,8 +38,11 @@ const Header = () => {
         </p>
       </div>
       <div className="h-[50px] flex items-center gap-[10.4rem]">
-        <button className="px-8 py-3 bg-[#2f71e3] text-white rounded-[50px] hover:opacity-75 transition-opacity duration-300 ease-in-out">
-          Create New Task
+        <button
+          onClick={openAddModal}
+          className="px-6 py-2 bg-[#2f71e3] text-white rounded-[50px] hover:opacity-75 transition-opacity duration-300 ease-in-out"
+        >
+          {add}
         </button>
 
         <div className="flex gap-4 items-center">

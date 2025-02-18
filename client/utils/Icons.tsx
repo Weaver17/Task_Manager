@@ -54,7 +54,7 @@ export const home = (
   <AiFillHome className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
 export const add = (
-  <FaPlus className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
+  <FaPlus className="h-8 w-8 hover:opacity-100 duration-300 ease-in-out" />
 );
 
 // export const github = <i className="fa-brands fa-github"></i>;

@@ -16,7 +16,7 @@ export const formatTime = (createdAt: string) => {
   }
 
   // check if created with the last 7 days
-  if (created.isAfter(moment().subtract(6, "days"))) {
+  if (created.isAfter(moment().add(6, "days"))) {
     return created.fromNow();
   }
 
@@ -25,7 +25,34 @@ export const formatTime = (createdAt: string) => {
     return created.fromNow();
   }
 
-  return created.format("DD/MM/YYYY");
+  return created.format("MM/DD/YYYY");
+};
+
+export const formatDueDate = (dueDate: string) => {
+  const now = moment();
+  const due = moment(dueDate);
+
+  // if the task is due today
+  if (due.isSame(now, "day")) {
+    return "Today";
+  }
+
+  // if the task was due yesterday
+  if (due.isSame(now.subtract(1, "days"), "day")) {
+    return "Yesterday";
+  }
+
+  // // check if created with the last 7 days
+  // if (due.isAfter(now.add(1, "days") && now.add(2, "days"))) {
+  //   return "Tomorrow";
+  // }
+
+  // // if item was created within the last 4 weeks (up to 1 month ago)
+  // if (created.isAfter(moment().subtract(3, "weeks"), "week")) {
+  //   return created.fromNow();
+  // }
+
+  return due.format("MM/DD/YYYY");
 };
 
 export const filteredTasks = (tasks: Task[], priority: string) => {

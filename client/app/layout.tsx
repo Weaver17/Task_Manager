@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lora } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import UserProvider from "@/providers/UserProvider";
@@ -9,7 +9,8 @@ import MainContentLayout from "@/providers/MainContentLayout";
 import SidebarProvider from "@/providers/SidebarProvider";
 import MainLayout from "@/providers/MainLayout";
 
-const lora = Lora({
+const lato = Lato({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.className} antialiased`}>
+      <body className={`${lato.className} antialiased`}>
         {" "}
         <UserProvider>
           <div className="h-full flex overflow-hidden">

@@ -3,6 +3,8 @@
 import { TrendingUp } from "lucide-react";
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 
+import { overdueTasks } from "@/utils/utilities";
+
 import {
   Card,
   CardContent,
@@ -17,7 +19,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [{ title: "Tasks", progress: 4, completed: 3, overdue: 7 }];
+import { useTasks } from "@/context/taskContext";
+import { act } from "react";
 
 const chartConfig = {
   progress: {
@@ -35,9 +38,26 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function RadialChart() {
-  const tasks =
-    chartData[0].progress + chartData[0].completed + chartData[0].overdue;
+  const { tasks, completedTasks, activeTasks } = useTasks();
 
+  const tasksTotal = tasks.length;
+  const chartData = [
+    {
+      title: "Tasks",
+      progress: activeTasks.length,
+      completed: completedTasks.length,
+      overdue: overdueTasks(activeTasks).length,
+    },
+  ];
+
+  console.log(
+    "Completed",
+    completedTasks,
+    "Active",
+    activeTasks,
+    "Overdue",
+    overdueTasks
+  );
   return (
     <Card className="flex flex-col border-2 border-[#3f71e3] shadow-none bg-[#efefef]">
       <CardHeader className="items-center pb-0">
@@ -69,7 +89,7 @@ export function RadialChart() {
                           y={(viewBox.cy || 0) - 16}
                           className="fill-foreground text-2xl font-bold"
                         >
-                          {tasks.toLocaleString()}
+                          {tasksTotal.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
