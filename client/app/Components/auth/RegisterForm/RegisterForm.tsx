@@ -1,9 +1,10 @@
 "use client";
 import { useUserContext } from "@/context/userContext";
 import React from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 function RegisterForm() {
-  const { registerUser, userState, handlerUserInput } = useUserContext();
+  const { registerUser, userState, handleUserInput } = useUserContext();
   const { name, email, password } = userState;
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -19,7 +20,7 @@ function RegisterForm() {
           Create an account. Already have an account?{" "}
           <a
             href="/login"
-            className="font-bold text-[#2ECC71] hover:text-[#7263F3] transition-all duration-300"
+            className="font-bold text-[#3f71e3] hover:text-[#3055ab] transition-all duration-300"
           >
             Login here
           </a>
@@ -32,9 +33,9 @@ function RegisterForm() {
             type="text"
             id="name"
             value={name}
-            onChange={(e) => handlerUserInput("name")(e)}
+            onChange={(e) => handleUserInput("name")(e)}
             name="name"
-            className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
+            className="px-4 py-3 border-[2px] rounded-md outline-[#3f71e3] text-gray-800"
             placeholder="John Doe"
           />
         </div>
@@ -46,9 +47,9 @@ function RegisterForm() {
             type="text"
             id="email"
             value={email}
-            onChange={(e) => handlerUserInput("email")(e)}
+            onChange={(e) => handleUserInput("email")(e)}
             name="email"
-            className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
+            className="px-4 py-3 border-[2px] rounded-md outline-[#3f71e3] text-gray-800"
             placeholder="johndoe@gmail.com"
           />
         </div>
@@ -60,19 +61,19 @@ function RegisterForm() {
             type={showPassword ? "text" : "password"}
             id="password"
             value={password}
-            onChange={(e) => handlerUserInput("password")(e)}
+            onChange={(e) => handleUserInput("password")(e)}
             name="password"
-            className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
+            className="px-4 py-3 border-[2px] rounded-md outline-[#3f71e3] text-gray-800"
             placeholder="***************"
           />
           <button
             type="button"
-            className="absolute p-1 right-4 top-[43%] text-[22px] text-[#999] opacity-45"
+            className="absolute p-1 right-4 top-[48%] text-[22px] text-[#999] opacity-45"
           >
             {showPassword ? (
-              <i className="fas fa-eye-slash" onClick={togglePassword}></i>
+              <FaRegEye onClick={togglePassword} />
             ) : (
-              <i className="fas fa-eye" onClick={togglePassword}></i>
+              <FaRegEyeSlash onClick={togglePassword} />
             )}
           </button>
         </div>
@@ -82,7 +83,7 @@ function RegisterForm() {
             type="submit"
             disabled={!name || !email || !password}
             onClick={registerUser}
-            className="mt-[1.5rem] flex-1 px-4 py-3 font-bold bg-[#2ECC71] text-white rounded-md hover:bg-[#1abc9c] transition-colors"
+            className="mt-[1.5rem] flex-1 px-4 py-3 font-bold bg-[#3f71e3] text-white rounded-md hover:bg-[#3055ab] transition-colors"
           >
             Register Now
           </button>

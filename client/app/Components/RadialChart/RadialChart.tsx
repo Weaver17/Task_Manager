@@ -50,14 +50,6 @@ export function RadialChart() {
     },
   ];
 
-  console.log(
-    "Completed",
-    completedTasks,
-    "Active",
-    activeTasks,
-    "Overdue",
-    overdueTasks
-  );
   return (
     <Card className="flex flex-col border-2 border-[#3f71e3] shadow-none bg-[#efefef]">
       <CardHeader className="items-center pb-0">

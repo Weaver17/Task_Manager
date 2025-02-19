@@ -24,15 +24,27 @@ function TaskItem({ task }: TaskItemProps) {
     }
   };
 
-  const { getTask, openEditModal, deleteTask, modalMode } = useTasks();
+  const { getTask, openEditModal, activeTasks, deleteTask, modalMode } =
+    useTasks();
 
   return (
-    <div className="h-[16rem] px-4 py-3 flex flex-col gap-4 shadow-sm bg-[#efefef] rounded-lg border-2 border-white ">
+    <motion.div
+      variants={item}
+      className="h-[16rem] px-4 py-3 flex flex-col gap-4 shadow-sm bg-[#efefef] rounded-lg border-2 border-white "
+    >
       <div className="h-full">
         <h4 className="font-bold text-2xl">{task.title}</h4>
         <p>{task.description}</p>
       </div>
-      <p className={`mt-auto text-sm text-[#555]`}>
+      <p
+        className={`mt-auto text-sm ${
+          overdueTasks(activeTasks).includes(task)
+            ? "text-[#f75239]"
+            : task.completed
+            ? "text-[#999]"
+            : "text-[#555]"
+        } `}
+      >
         Due: {formatDueDate(task.dueDate)}
       </p>
       <div className="mt-auto flex justify-between items-center">
@@ -58,7 +70,7 @@ function TaskItem({ task }: TaskItemProps) {
           <button className="text-[#f3321490]">{trash}</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,25 +1,29 @@
 "use client";
 import { useUserContext } from "@/context/userContext";
 import React from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 function LoginForm() {
-  const { loginUser, userState, handlerUserInput } = useUserContext();
+  const { loginUser, userState, handleUserInput } = useUserContext();
   const { email, password } = userState;
   const [showPassword, setShowPassword] = React.useState(false);
 
   const togglePassword = () => setShowPassword(!showPassword);
 
   return (
-    <form className="relative m-[2rem] px-10 py-14 rounded-lg bg-white w-full max-w-[520px]">
+    <form
+      onSubmit={loginUser}
+      className="relative m-[2rem] px-10 py-14 rounded-lg bg-white w-full max-w-[520px]"
+    >
       <div className="relative z-10">
         <h1 className="mb-2 text-center text-[1.35rem] font-medium">
           Login to Your Account
         </h1>
         <p className="mb-8 px-[2rem] text-center text-[#999] text-[14px]">
-          Login Now. Don't have an account?{" "}
+          Don't have an account?{" "}
           <a
             href="/register"
-            className="font-bold text-[#2ECC71] hover:text-[#7263F3] transition-all duration-300"
+            className="font-bold text-[#3f71e3] hover:text-[#3055ab] transition-all duration-300"
           >
             Register here
           </a>
@@ -33,9 +37,9 @@ function LoginForm() {
             type="text"
             id="email"
             value={email}
-            onChange={(e) => handlerUserInput("email")(e)}
+            onChange={(e) => handleUserInput("email")(e)}
             name="email"
-            className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
+            className="px-4 py-3 border-[2px] rounded-md outline-[#3f71e3] text-gray-800"
             placeholder="johndoe@gmail.com"
           />
         </div>
@@ -47,26 +51,26 @@ function LoginForm() {
             type={showPassword ? "text" : "password"}
             id="password"
             value={password}
-            onChange={(e) => handlerUserInput("password")(e)}
+            onChange={(e) => handleUserInput("password")(e)}
             name="password"
-            className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
+            className="px-4 py-3 border-[2px] rounded-md outline-[#3f71e3] text-gray-800"
             placeholder="***************"
           />
           <button
             type="button"
-            className="absolute p-1 right-4 top-[43%] z-100 text-[22px] text-[#999] opacity-100"
+            className="absolute p-1 right-4 top-[48%] z-100 text-[22px] text-[#999] opacity-45"
           >
             {showPassword ? (
-              <i className="fas fa-eye-slash" onClick={togglePassword}></i>
+              <FaRegEye onClick={togglePassword} />
             ) : (
-              <i className="fas fa-eye" onClick={togglePassword}></i>
+              <FaRegEyeSlash onClick={togglePassword} />
             )}
           </button>
         </div>
         <div className="mt-4 flex justify-end">
           <a
             href="/forgot-password"
-            className="font-bold text-[#2ECC71] text-[14px] hover:text-[#7263F3] transition-all duration-300"
+            className="font-bold text-[#3f71e3] text-[14px] hover:text-[#3055ab] transition-all duration-300"
           >
             Forgot password?
           </a>
@@ -75,8 +79,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={!email || !password}
-            onClick={loginUser}
-            className="mt-[1.5rem] flex-1 px-4 py-3 font-bold bg-[#2ECC71] text-white rounded-md hover:bg-[#1abc9c] transition-colors"
+            className="mt-[1.5rem] flex-1 px-4 py-3 font-bold bg-[#3f71e3] text-white rounded-md hover:bg-[#3055ab] transition-colors"
           >
             Login Now
           </button>

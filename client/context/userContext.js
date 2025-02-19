@@ -16,6 +16,7 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [allUsers, setAllUsers] = useState([]);
   const [userState, setUserState] = useState({
+    avatar: "",
     name: "",
     email: "",
     password: "",
@@ -322,7 +323,7 @@ export const UserContextProvider = ({ children }) => {
   };
 
   // dynamic form handler
-  const handlerUserInput = (name) => (e) => {
+  const handleUserInput = (name) => (e) => {
     const value = e.target.value;
 
     setUserState((prevState) => ({
@@ -377,7 +378,8 @@ export const UserContextProvider = ({ children }) => {
       value={{
         registerUser,
         userState,
-        handlerUserInput,
+        setUserState,
+        handleUserInput,
         loginUser,
         logoutUser,
         userLoginStatus,

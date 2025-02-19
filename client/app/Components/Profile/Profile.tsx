@@ -7,10 +7,14 @@ import React from "react";
 
 function Profile() {
   const { user } = useUserContext();
-  const { tasks, activeTasks, completedTasks } = useTasks();
+  const { tasks, activeTasks, completedTasks, profileModal, openProfileModal } =
+    useTasks();
   return (
     <div className="m-6">
-      <div className=" px-2 py-4 flex items-center gap-3 bg-[#dfdfdf] rounded-[0.8rem] hover:bg-[#cfcfcf] transition duration-300 ease-in-out cursor-pointer border-2 border-transparent hover:border-[#3f71e3]">
+      <div
+        onClick={openProfileModal}
+        className=" px-2 py-4 flex items-center gap-3 bg-[#dfdfdf] rounded-[0.8rem] hover:bg-[#cfcfcf] transition duration-300 ease-in-out cursor-pointer border-2 border-transparent hover:border-[#3f71e3]"
+      >
         <div>
           <Image
             src={user?.photo}

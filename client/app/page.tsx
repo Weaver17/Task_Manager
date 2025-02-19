@@ -28,17 +28,20 @@ export default function Home() {
         <Filters />
       </div>
 
-      <div className="pb-[2rem] mt-6 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-[1.5rem]">
+      <motion.div
+        variants={container}
+        className="pb-[2rem] mt-6 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-[1.5rem]"
+      >
         {filtered?.map((task: Task, i: number) => (
           <TaskItem key={i} task={task} />
         ))}
-        <button
+        <motion.button
           onClick={openAddModal}
           className="h-[16rem] w-full opacity-50 flex justify-center items-center py-2 rounded-md text-lg font-medium text-gray-500 border-dashed border-2 border-gray-400 hover:bg-gray-300 hover:border-none transition duration-200 ease-in-out "
         >
           {add}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     </main>
   );
 }

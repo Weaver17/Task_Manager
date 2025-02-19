@@ -126,7 +126,7 @@ function Modal() {
               modalMode === "edit" ? "bg-[#2cc0b8]" : "bg-[#3f71e3]"
             }`}
           >
-            {`${modalMode === "edit" ? "Update Task" : "Add Task"}`}
+            {`${modalMode === "edit" ? "Update Task" : "Create Task"}`}
           </button>
         </div>
       </form>
