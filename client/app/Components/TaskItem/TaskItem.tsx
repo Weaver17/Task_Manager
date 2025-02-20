@@ -24,7 +24,7 @@ function TaskItem({ task }: TaskItemProps) {
     }
   };
 
-  const { getTask, openEditModal, activeTasks, deleteTask, modalMode } =
+  const { getTask, openEditModal, activeTasks, openConfirmModal, modalMode } =
     useTasks();
 
   return (
@@ -67,7 +67,16 @@ function TaskItem({ task }: TaskItemProps) {
           >
             {edit}
           </button>
-          <button className="text-[#f3321490]">{trash}</button>
+          <button
+            onClick={() => {
+              console.log(task);
+              getTask(task._id);
+              openConfirmModal(task);
+            }}
+            className="text-[#f3321490]"
+          >
+            {trash}
+          </button>
         </div>
       </div>
     </motion.div>

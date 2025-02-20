@@ -19,6 +19,7 @@ export const TasksProvider = ({ children }) => {
   const [activeTask, setActiveTask] = React.useState(null);
   const [modalMode, setModalMode] = React.useState("");
   const [profileModal, setProfileModal] = React.useState(false);
+  const [confirmModal, setConfirmModal] = React.useState(false);
 
   const openAddModal = () => {
     setModalMode("add");
@@ -36,9 +37,16 @@ export const TasksProvider = ({ children }) => {
     setProfileModal(true);
   };
 
+  const openConfirmModal = (task) => {
+    setConfirmModal(true);
+    setModalMode("confirm");
+    setActiveTask(task);
+  };
+
   const closeModal = () => {
     setIsEditing(false);
     setProfileModal(false);
+    setConfirmModal(false);
     setModalMode("");
     setActiveTask(null);
     setTask({});
@@ -160,6 +168,8 @@ export const TasksProvider = ({ children }) => {
         activeTasks,
         completedTasks,
         profileModal,
+        openConfirmModal,
+        confirmModal,
       }}
     >
       {children}

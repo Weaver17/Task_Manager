@@ -17,7 +17,7 @@ function RegisterForm() {
           Register for an Account
         </h1>
         <p className="mb-8 px-[2rem] text-center text-[#999] text-[14px]">
-          Create an account. Already have an account?{" "}
+          Already have an account?{" "}
           <a
             href="/login"
             className="font-bold text-[#3f71e3] hover:text-[#3055ab] transition-all duration-300"
