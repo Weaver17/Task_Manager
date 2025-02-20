@@ -53,7 +53,7 @@ export function RadialChart() {
   return (
     <Card className="flex flex-col border-2 border-[#3f71e3] shadow-none bg-[#efefef]">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Recent Tasks</CardTitle>
+        <CardTitle className="mb-6">Recent Tasks</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-1 items-center pb-0">
         <ChartContainer
