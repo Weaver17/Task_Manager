@@ -54,7 +54,9 @@ function TaskItem({ task }: TaskItemProps) {
         </p>
         <div className="flex items-center gap-4">
           <button
-            className={`${task.completed ? "text-yellow-400" : "text-[#555]"}`}
+            className={` cursor-default ${
+              task.completed ? "text-yellow-400" : "text-[#555]/30"
+            }`}
           >
             {star}
           </button>
@@ -69,7 +71,6 @@ function TaskItem({ task }: TaskItemProps) {
           </button>
           <button
             onClick={() => {
-              console.log(task);
               getTask(task._id);
               openConfirmModal(task);
             }}

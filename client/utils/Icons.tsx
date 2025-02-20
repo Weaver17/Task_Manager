@@ -17,9 +17,7 @@ import { AiFillHome } from "react-icons/ai";
 export const github = (
   <FaGithub className="h-8 w-8 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
-export const star = (
-  <IoIosStar className="h-4 w-4 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
-);
+export const star = <IoIosStar className="h-4 w-4 " />;
 export const trash = (
   <BsFillTrash3Fill className="h-4 w-4 opacity-50 hover:opacity-100 duration-300 ease-in-out" />
 );
